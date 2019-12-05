@@ -1,4 +1,4 @@
-import 'package:exchange_gift/features/landing_page/landing_page.dart';
+import 'package:exchange_gift/features/landing_page/presentation/landing_page.dart';
 
 const LANDING_PAGE = "/";
 

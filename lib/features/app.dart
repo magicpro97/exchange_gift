@@ -1,3 +1,4 @@
+import 'package:exchange_gift/core/theme/theme.dart';
 import 'package:exchange_gift/core/widgets/apdaptive_app.dart';
 import 'package:exchange_gift/features/route.dart';
 import 'package:exchange_gift/generated/i18n.dart';
@@ -8,10 +9,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveApp(
-      themeData: ThemeData(
-        primaryColor: Colors.green,
-        accentColor: Colors.greenAccent,
-      ),
+      themeData: primaryTheme,
       onGenerateTitle: (context) => S.of(context).app_name,
       route: route,
       initialRoute: LANDING_PAGE,

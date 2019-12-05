@@ -22,6 +22,7 @@ class S implements WidgetsLocalizations {
   TextDirection get textDirection => TextDirection.ltr;
 
   String get app_name => "Exchange Gift";
+  String get type_your_name => "Type your name";
 }
 
 class $en extends S {
