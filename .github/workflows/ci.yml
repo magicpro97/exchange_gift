@@ -13,22 +13,20 @@ on:
 jobs:
   build:
     runs-on: [ubuntu-latest]
-    container:
-      image:  google/dart:latest
     steps:
     - uses: actions/checkout@v1
-      # The flutter action needs java so include it
-    - uses: actions/setup-java@v1
+
+    - name: install dependencies
+      uses: steebchen/flutter@v1.0.0
       with:
-        java-version: '12.x'
-    # Include the flutter action
-    - name: Flutter action
-      uses: subosito/flutter-action@v1.1.1
+        args: pub get
+
+    - name: run tests
+      uses: steebchen/flutter@v1.0.0
       with:
-        channel: 'stable'
-    # Flutter
-    - run: flutter doctor
-    # Get flutter packages
-    - run: flutter pub get
-    # Build :D 
-    - run: flutter build aot
+        args: test
+
+    - name: build apk
+      uses: steebchen/flutter@v1.0.0
+      with:
+        args: build apk --release
