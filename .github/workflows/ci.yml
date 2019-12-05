@@ -1,0 +1,33 @@
+name: Dart CI
+
+on:
+  push:
+    branches:
+    - master
+    - dev/*
+  pull_request:
+    branches:
+    - master
+    - dev/*
+      
+jobs:
+  build:
+    runs-on: macOS-latest
+    container:
+      image:  google/dart:latest
+    steps:
+    - uses: actions/checkout@v1
+      # The flutter action needs java so include it
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '12.x'
+    # Include the flutter action
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'stable'
+    # Flutter
+    - run: flutter doctor
+    # Get flutter packages
+    - run: flutter pub get
+    # Build :D 
+    - run: flutter build aot
